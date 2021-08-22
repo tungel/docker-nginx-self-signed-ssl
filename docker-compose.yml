@@ -1,0 +1,15 @@
+services:
+  nginx-proxy:
+    image: nginx:mainline-alpine
+    volumes:
+      - ./certs/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
+      - ./certs/nginx-selfsigned.private-key:/etc/ssl/private/nginx-selfsigned.key
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "6443:443"
+
+  another-service:
+    image: nginx:mainline-alpine
+    volumes:
+      - ./another-service.html:/usr/share/nginx/html/index.html
+
