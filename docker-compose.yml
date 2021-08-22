@@ -5,6 +5,7 @@ services:
       - ./certs/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
       - ./certs/nginx-selfsigned.private-key:/etc/ssl/private/nginx-selfsigned.key
       - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./proxy.conf:/etc/nginx/includes/proxy.conf
     ports:
       - "6443:443"
 

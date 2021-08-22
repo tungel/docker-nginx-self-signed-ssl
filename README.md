@@ -24,7 +24,7 @@ The options references:
 - `-nodes`  Do not encrypt the private key with a passphrase so that nginx can read it.
 - `subj`: `/C` for country, `/ST` for state, `/O` for organization, `/CN` for common name
 
-## Spin up docker containers
+## Spin up docker containers and set up hosts file
 
 Run
 
@@ -42,6 +42,12 @@ The command creates 2 containers:
   port to its host machine. Instead, we access the web server via the previous
   nginx proxy.
 
+Next, add an entry to `/etc/hosts` file
+
+```
+127.0.0.1       dev.ttl
+```
+
 ## Result
 
 - Open https://localhost:6443/ on the browser. It should show the text `This is an awesome app.`
@@ -49,4 +55,5 @@ The command creates 2 containers:
 - Open https://localhost:6443/test on the browser. It should show the default
   nginx's html content from the nginx server running on the `docker-nginx-self-signed-ssl_nginx-proxy_1`
   container.
+- Open https://dev.ttl:6443/ , it should show the same content as https://localhost:6443/test
 
